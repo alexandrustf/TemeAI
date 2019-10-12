@@ -1,0 +1,11 @@
+C:\Users\Alex Stefan\source\repos\IaTema1\IaTema1\obj\Debug\netcoreapp3.0\IaTema1.csprojAssemblyReference.cache
+C:\Users\Alex Stefan\source\repos\IaTema1\IaTema1\obj\Debug\netcoreapp3.0\IaTema1.AssemblyInfoInputs.cache
+C:\Users\Alex Stefan\source\repos\IaTema1\IaTema1\obj\Debug\netcoreapp3.0\IaTema1.AssemblyInfo.cs
+C:\Users\Alex Stefan\source\repos\IaTema1\IaTema1\bin\Debug\netcoreapp3.0\IaTema1.exe
+C:\Users\Alex Stefan\source\repos\IaTema1\IaTema1\bin\Debug\netcoreapp3.0\IaTema1.deps.json
+C:\Users\Alex Stefan\source\repos\IaTema1\IaTema1\bin\Debug\netcoreapp3.0\IaTema1.runtimeconfig.json
+C:\Users\Alex Stefan\source\repos\IaTema1\IaTema1\bin\Debug\netcoreapp3.0\IaTema1.runtimeconfig.dev.json
+C:\Users\Alex Stefan\source\repos\IaTema1\IaTema1\bin\Debug\netcoreapp3.0\IaTema1.dll
+C:\Users\Alex Stefan\source\repos\IaTema1\IaTema1\bin\Debug\netcoreapp3.0\IaTema1.pdb
+C:\Users\Alex Stefan\source\repos\IaTema1\IaTema1\obj\Debug\netcoreapp3.0\IaTema1.dll
+C:\Users\Alex Stefan\source\repos\IaTema1\IaTema1\obj\Debug\netcoreapp3.0\IaTema1.pdb
