@@ -13,7 +13,8 @@ namespace IaTema1
         {
             Console.WriteLine("Read Key");
 
-            RandomStrategy(GetInitialState(6, 15, 0, 8, 0, 1));
+            RandomStrategy(GetInitialState(6, 8, 0, 5, 0, 1));
+            //BacktrackingStrategy(GetInitialState(6, 5, 0, 3, 0, 1));
             Console.WriteLine("Read Ceva");
         }
 
@@ -29,7 +30,47 @@ namespace IaTema1
             else 
                 return false;
         }
+        
+        //public static State BacktrackingStrategy(State initialState) // NOT working!
+        //{
+        //    if (CheckIfFinalState(initialState))
+        //    {
+        //        return initialState;
+        //    }
+        //    var s = new State(initialState);
+        //    while (!CheckIfFinalState(s))
+        //    {
+        //        s = BKT(s);
+        //    }
 
+        //    return s;
+        //}
+
+        //private static State BKT(State s)
+        //{
+        //    for (int v1 = 0; v1 <= s.m1; v1++)
+        //    {
+        //        for (int v2 = 0; v2 <= s.c1; v2++)
+        //        {
+        //            int v11 = v1, v22 = v2;
+        //            if (s.pb == 2)
+        //            {
+        //                v11 = -v1;
+        //                v22 = -v2;
+        //            }
+        //            var nextState = TransitionToState(s, v11, v22);
+        //            if (!nextState.Equals(s))
+        //            {
+        //                Console.WriteLine("AM AJUNS AICI!");
+        //                s = nextState;
+        //                Console.WriteLine(s);
+        //                if (CheckIfFinalState(s))
+        //                    return s;
+        //            }
+        //        }
+        //    }
+        //    return s;
+        //}
         public static State RandomStrategy(State initialState)
         {
             var currentState = initialState;
@@ -48,16 +89,8 @@ namespace IaTema1
                     {
                         return initialState;
                     }
-                    var v1 = new Random().Next(initialState.b);
-                    var v2 = new Random().Next(initialState.b);
-                    var decideIfNegative = new Random().Next(2);
-                    if (initialState.pb == 2)
-                    {
-                        v1 = -v1;
-                        v2 = -v2;
-                    }
 
-                    var nextState = TransitionToState(initialState, v1, v2);
+                    var nextState = FindValidRandomState(initialState);
                     if (!visitedStates.Contains(nextState))
                     {
                         initialState = nextState;
@@ -70,20 +103,30 @@ namespace IaTema1
             return initialState;
         }
 
-        public static State TransitionToState(State s, int v1, int v2)
+        private static State FindValidRandomState(State initialState)
         {
-            if (CheckIfTransitionParametersAreValid(s, v1, v2) == false)
-                return s;
-            State nextState = new State(s.b, s.m1 - v1, s.c1 - v2, 3 - s.pb, s.m2 + v1,  s.c2 + v2);
-            if (CheckIfStateIsValid(s, s.c1 + s.c2, s.m1 + s.m2))
+            var v1 = new Random().Next(initialState.b);
+            var v2 = new Random().Next(initialState.b);
+            if (initialState.pb == 2)
             {
-                Console.WriteLine("v1 : " + v1 + " v2 : "+ v2);
-                return nextState;
+                v1 = -v1;
+                v2 = -v2;
             }
-            else
-                return s;
+
+            State nextState = new State(initialState);
+            if (CheckValidState(initialState, v1, v2))
+                nextState = new State(initialState.b, initialState.m1 - v1, initialState.c1 - v2, 3 - initialState.pb,
+                    initialState.m2 + v1, initialState.c2 + v2);
+            return nextState;
         }
 
+        private static bool CheckValidState(State s, int v1, int v2)
+        {
+            if (CheckIfTransitionParametersAreValid(s, v1, v2) && CheckIfStateIsValid(s, s.c1 + s.c2, s.m1 + s.m2))
+                return true;
+            return false;
+
+        }
         private static bool CheckIfTransitionParametersAreValid(State s, int v1, int v2)
         {
             int m = s.m1 + s.m2;

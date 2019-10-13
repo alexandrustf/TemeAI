@@ -6,6 +6,15 @@ namespace IaTema1
 {
     public class State
     {
+        public State(State state)
+        {
+            this.b = state.b;
+            this.m1 = state.m1;
+            this.m2 = state.m2;
+            this.c1 = state.c1;
+            this.c2 = state.c2;
+            this.pb = state.pb;
+        }
         public State(int b, int m1, int c1, int pb, int m2, int c2) // m >=c
         {
             this.b = b;
